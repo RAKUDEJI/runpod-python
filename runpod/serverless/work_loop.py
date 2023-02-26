@@ -39,7 +39,7 @@ async def start_worker(config):
 
             set_job_id(job["id"])
 
-            job_result = run_job(config["handler"], job)
+            job_result = await run_job(config["handler"], job)
 
             await send_result(session, job_result, job)
 
