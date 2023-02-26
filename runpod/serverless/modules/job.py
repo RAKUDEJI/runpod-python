@@ -34,7 +34,7 @@ async def get_job(session):
     return next_job
 
 
-def run_job(handler, job):
+async def run_job(handler, job):
     '''
     Run the job using the handler.
     Returns the job output or error.
@@ -44,7 +44,7 @@ def run_job(handler, job):
     run_result = {"error": "Failed to return job output or capture error."}
 
     try:
-        job_output = handler(job)
+        job_output = await handler(job)
 
         if isinstance(job_output, bool):
             run_result = {"output": job_output}

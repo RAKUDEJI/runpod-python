@@ -49,7 +49,7 @@ class WorkerAPI:
         '''
         set_job_id(job.id)
 
-        job_results = run_job(self.config["handler"], job.__dict__)
+        job_results = await run_job(self.config["handler"], job.__dict__)
 
         set_job_id(None)
 
