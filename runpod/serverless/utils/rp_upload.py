@@ -38,7 +38,7 @@ else:
 # ---------------------------------------------------------------------------- #
 #                                 Upload Image                                 #
 # ---------------------------------------------------------------------------- #
-def upload_image(job_id, image_location, result_index=0, results_list=None):
+def upload_image(job_id, image_location, result_index=0, results_list=None,metadata = {}):
     '''
     Upload image to bucket storage.
     '''
@@ -72,7 +72,8 @@ def upload_image(job_id, image_location, result_index=0, results_list=None):
         Bucket=f'{bucket}',
         Key=f'{job_id}/{image_name}.png',
         Body=output.getvalue(),
-        ContentType="image/png"
+        ContentType="image/png",
+        ExtraArgs = { 'Metadata' :  metadata } 
     )
 
     output.close()
